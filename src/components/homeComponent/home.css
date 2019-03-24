@@ -1,0 +1,12 @@
+.jumbotron {
+    display: flex;
+    height: 400px;
+    background-image: url('../../assets/home/joe.png');
+    background-size: cover;
+    background-repeat:   no-repeat;
+    background-position: center center;  
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
