@@ -12,6 +12,7 @@ import './App.css';
 
 import Home from './components/homeComponent/home.jsx';
 import Header from './components/headerComponent/header.jsx';
+import Footer from './components/footerComponent/footer.jsx';
 
 class App extends Component {
   render() {
@@ -23,6 +24,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
           </Switch>
+          <div>
+            <Footer />
+          </div>
         </Router>
       );
       // <div className="App">
