@@ -1,117 +1,121 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {withStyles} from '@material-ui/core/styles';
 
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
+import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import MenuList from '@material-ui/core/MenuList';
 
 const styles = {
     root: {
-      flexGrow: 1,
+        flexGrow: 1
     },
     grow: {
-      flexGrow: 1,
+        flexGrow: 1
     },
     menuButton: {
-      marginLeft: -12,
-      marginRight: 20,
-    },
-  };
+        marginLeft: -12,
+        marginRight: 20
+    }
+};
 
 class Header extends React.Component {
     state = {
-        auth: true,
-        anchorEl: null,
+        open: false
     };
-    
-    handleChange = event => {
-        this.setState({ auth: event.target.checked });
+
+    handleToggle = () => {
+        this.setState(state => ({
+            open: !state.open
+        }));
     };
-    
-        handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
-    
-        handleClose = () => {
-        this.setState({ anchorEl: null });
+
+    handleClose = event => {
+        if (this.anchorEl.contains(event.target)) {
+            return;
+        }
+
+        this.setState({open: false});
     };
 
     render() {
-        const { classes } = this.props;
-        const { auth, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
+        const {classes} = this.props;
+        const {open} = this.state;
         const navBar = (
             <div className={classes.root}>
-                <FormGroup>
-                <FormControlLabel
-                    control={
-                    <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
-                    }
-                    label={auth ? 'Logout' : 'Login'}
-                />
-                </FormGroup>
                 <AppBar position="static">
-                <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                    <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" color="inherit" className={classes.grow}>
-                    Photos
-                    </Typography>
-                    {auth && (
-                    <div>
-                        <IconButton
-                        aria-owns={open ? 'menu-appbar' : undefined}
-                        aria-haspopup="true"
-                        onClick={this.handleMenu}
-                        color="inherit"
-                        >
-                        <AccountCircle />
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                            <MenuIcon/>
                         </IconButton>
-                        <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
+                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                            BADD
+                        </Typography>
+                        <Button
+                            color="inherit"
+                            buttonRef={node => {
+                            this.anchorEl = node;
                         }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
-                        open={open}
-                        onClose={this.handleClose}
-                        >
-                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                        </Menu>
-                    </div>
-                    )}
-                </Toolbar>
+                            aria-owns={open
+                            ? 'menu-list-grow'
+                            : undefined}
+                            aria-haspopup="true"
+                            onClick={this.handleToggle}>
+                            Pop Menu
+                        </Button>
+                        <Popper open={open} anchorEl={this.anchorEl} transition disablePortal>
+                            {({TransitionProps, placement}) => (
+                                <Grow
+                                    {...TransitionProps}
+                                    id="menu-list-grow"
+                                    style={{
+                                    transformOrigin: placement === 'bottom'
+                                        ? 'center top'
+                                        : 'center bottom'
+                                }}>
+                                    <Paper>
+                                        <ClickAwayListener onClickAway={this.handleClose}>
+                                            <MenuList>
+                                                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                                <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                                            </MenuList>
+                                        </ClickAwayListener>
+                                    </Paper>
+                                </Grow>
+                            )}
+                        </Popper>
+                        <Button color="inherit">Calendar</Button>
+                        <Button color="inherit">Gallery</Button>
+                        <Button color="inherit">Maps</Button>
+                        <Button color="inherit">Reading</Button>
+                        <Button color="inherit">Recs</Button>
+                    </Toolbar>
                 </AppBar>
             </div>
-        )
+        );
 
-    return (
-      <div>
-        {navBar}
-      </div>
-    )
-  }
+        return (
+            <div>
+                {navBar}
+            </div>
+        )
+    }
 }
 
 Header.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(Header);
+    classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Header);
