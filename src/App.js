@@ -11,13 +11,17 @@ import logo from './logo.svg';
 import './App.css';
 
 import Home from './components/homeComponent/home.jsx';
+import Header from './components/headerComponent/header.jsx';
 
 class App extends Component {
   render() {
       const pageBody = (
         <Router>
+          <div>
+            <Header />
+          </div>
           <Switch>
-            <Route exact path="/" component={ Home } />
+            <Route exact path="/" component={Home} />
           </Switch>
         </Router>
       );
