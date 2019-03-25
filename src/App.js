@@ -14,6 +14,7 @@ import Home from './components/homeComponent/home.jsx';
 import Header from './components/headerComponent/header.jsx';
 import Footer from './components/footerComponent/footer.jsx';
 import Grid from './components/gridComponent/grid.jsx';
+import Read from './components/readComponent/read.jsx';
 
 
 class App extends Component {
