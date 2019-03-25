@@ -13,7 +13,8 @@ import './App.css';
 import Home from './components/homeComponent/home.jsx';
 import Header from './components/headerComponent/header.jsx';
 import Footer from './components/footerComponent/footer.jsx';
-import Read from './components/readComponent/read.jsx';
+import Grid from './components/gridComponent/grid.jsx';
+
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
           </div>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route path="/grid" component={Grid} />
             <Route path="/reading" component={Read} />
           </Switch>
           <div>
