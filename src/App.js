@@ -15,6 +15,7 @@ import Header from './components/headerComponent/header.jsx';
 import Footer from './components/footerComponent/footer.jsx';
 import Grid from './components/gridComponent/grid.jsx';
 
+
 class App extends Component {
   render() {
       const pageBody = (
@@ -25,6 +26,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/grid" component={Grid} />
+            <Route path="/reading" component={Read} />
           </Switch>
           <div>
             <Footer />

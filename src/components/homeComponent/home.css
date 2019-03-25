@@ -1,10 +1,11 @@
 .jumbotron {
     display: flex;
-    height: 400px;
     background-image: url('../../assets/home/joe.png');
+    max-width: 100%;
+    height: 90vh;
     background-size: cover;
-    background-repeat:   no-repeat;
-    background-position: center center;  
+    background-repeat: no-repeat;
+    background-position: top center;  
     justify-content: center;
     align-items: center;
     flex-direction: column;
