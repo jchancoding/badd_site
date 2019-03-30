@@ -13,16 +13,12 @@ import './App.css';
 import { createMuiTheme } from '@material-ui/core/styles';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 
-import Home from './components/homeComponent/home.jsx';
+import Home from './components/homeComponent/Home.jsx';
 import Header from './components/headerComponent/header.jsx';
 import Footer from './components/footerComponent/footer.jsx';
+import Grid from './components/gridComponent/grid.jsx';
 import Read from './components/readComponent/read.jsx';
 
-// const palette = {
-//   primary: { main: '#80CBC4' },
-//   secondary: { main: '#EF9A9A' }
-// };
-// const themeName = 'Monte Carlo Sea Pink Climbing Mouse';
 const palette = {
   primary: { main: '#004D40' },
   secondary: { main: '#5D4037' }
@@ -37,10 +33,13 @@ class App extends Component {
           <div>
             <Header />
           </div>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/reading" component={Read} />
-          </Switch>
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/grid" component={Grid} />
+              <Route path="/reading" component={Read} />
+            </Switch>
+          </div>
           <div>
             <Footer />
           </div>
