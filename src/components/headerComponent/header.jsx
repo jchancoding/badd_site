@@ -59,8 +59,7 @@ class Header extends React.Component {
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon/>
                         </IconButton>
-                        <Typography variant="h6" color="inherit" className={classes.grow}>
-                            BADD
+                        <Typography variant="h6" color="inherit" className={classes.grow}><Link href={'/'} className={classes.link} underline="none" color="inherit">BADD</Link>
                         </Typography>
                         <Button
                             color="inherit"

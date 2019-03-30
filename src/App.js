@@ -10,14 +10,29 @@ import {
 import logo from './logo.svg';
 import './App.css';
 
+import { createMuiTheme } from '@material-ui/core/styles';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+
 import Home from './components/homeComponent/home.jsx';
 import Header from './components/headerComponent/header.jsx';
 import Footer from './components/footerComponent/footer.jsx';
 import Read from './components/readComponent/read.jsx';
 
+// const palette = {
+//   primary: { main: '#80CBC4' },
+//   secondary: { main: '#EF9A9A' }
+// };
+// const themeName = 'Monte Carlo Sea Pink Climbing Mouse';
+const palette = {
+  primary: { main: '#004D40' },
+  secondary: { main: '#5D4037' }
+};
+const themeName = 'Aqua Deep Millbrook Dog';
+const theme = createMuiTheme({ palette, themeName });
 class App extends Component {
   render() {
       const pageBody = (
+        <MuiThemeProvider theme={theme}>
         <Router>
           <div>
             <Header />
@@ -30,23 +45,8 @@ class App extends Component {
             <Footer />
           </div>
         </Router>
+        </MuiThemeProvider>
       );
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
 
   return (
       <div>
