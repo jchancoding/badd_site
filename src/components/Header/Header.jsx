@@ -101,6 +101,7 @@ class Header extends React.Component {
                         <Button color="inherit">Maps</Button>
                         <Button color="inherit"><Link href={'/reading'} className={classes.link} underline="none" color="inherit">Reading</Link></Button>
                         <Button color="inherit">Recs</Button>
+                        <Button color="inherit"><Link href={'/referrals'} className={classes.link} underline="none" color="inherit">Referrals</Link></Button>
                     </Toolbar>
                 </AppBar>
             </div>

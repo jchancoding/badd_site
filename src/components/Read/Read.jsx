@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import './read.css'
+import './Read.css'
 
-export default class Read extends Component {
-  render() {
-
-    
+class Read extends Component {
+  render() {  
     return (
       <Paper square="true">
           <Grid container justify="center">
@@ -20,3 +16,9 @@ export default class Read extends Component {
     )
   }
 }
+
+Read.propTypes = {
+
+};
+
+export default Read;

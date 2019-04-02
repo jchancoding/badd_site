@@ -1,64 +1,45 @@
-import React, { Component } from 'react';
-import ReactDOM from "react-dom";
-import { 
-  BrowserRouter as Router, 
-  Route, 
-  withRouter,
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Route,
   Switch,
-  Redirect 
-} from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+} from 'react-router-dom'
+import './App.css'
 
-import Home from './components/homeComponent/Home.jsx';
-import Header from './components/headerComponent/header.jsx';
-import Footer from './components/footerComponent/footer.jsx';
-import Grid from './components/gridComponent/grid.jsx';
-import Read from './components/readComponent/read.jsx';
+import Home from './components/Home/Home'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Referrals from './components/Referrals/Referrals'
+import Read from './components/Read/Read'
 
 
 class App extends Component {
   render() {
-      const pageBody = (
-        <Router>
-          <div>
-            <Header />
-          </div>
-          <div className="App">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/grid" component={Grid} />
-              <Route path="/reading" component={Read} />
-            </Switch>
-          </div>
-          <div>
-            <Footer />
-          </div>
-        </Router>
-      );
-      // <div className="App">
-      //   <header className="App-header">
-      //     <img src={logo} className="App-logo" alt="logo" />
-      //     <p>
-      //       Edit <code>src/App.js</code> and save to reload.
-      //     </p>
-      //     <a
-      //       className="App-link"
-      //       href="https://reactjs.org"
-      //       target="_blank"
-      //       rel="noopener noreferrer"
-      //     >
-      //       Learn React
-      //     </a>
-      //   </header>
-      // </div>
+    const pageBody = (
+      <Router>
+        <div>
+          <Header />
+        </div>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/referrals" component={Referrals} />
+            <Route path="/reading" component={Read} />
+          </Switch>
+        </div>
+        <div>
+          <Footer />
+        </div>
+      </Router>
+    )
 
-  return (
+    return (
       <div>
-        { pageBody }
+        {pageBody}
       </div>
     )
   }
 }
 
-export default App;
+export default App
